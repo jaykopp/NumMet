@@ -58,7 +58,7 @@ def QR_Eig(A,n):
     return spectrum,N
 
 
-def Hessenberg(A,n):
+def Hessenberg(A,n): #fungere ikkje
     z = []
     e = [0]*n
     u = []
