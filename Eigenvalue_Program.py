@@ -59,12 +59,23 @@ def QR_Eig(A,n):
 
 
 def Hessenberg(A,n):
-		for k in range(1,n-2):
-        z = A
-        e = [0]*(n-k)
-        e[0] = 1
-        u = z + (np.sign(z)/nl.norm(z))*e
-        u = u/nl.norm(u)
+    z = []
+    e = [0]*n
+    u = []
+    e[0] = 1
+    for k in range(1, n - 2):
+        for i in range(k+1,n):
+            z.append(A[i][k])
+        for i in range(0,n):
+            e.append((n-k))
+        u = z + np.sign(z[0])*nl.norm(z)*e
+        u /= nl.norm(u)
+        for i in range(k + 1, n):
+            for j in range(k,n):
+                A[i][j] += -2*u*(np.transpose(u)*A[i][j])
+        for i in range(1, n):
+            for j in range(k+1,n):
+                A[i][j] += -2*(A[i][j]*u)*np.transpose(u)
     return A
 
 
