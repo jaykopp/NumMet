@@ -1,2 +1,2 @@
 # NumMet
-La oss gjøre det bra
+La oss gjøre det dårlig
