@@ -5,6 +5,7 @@ import os
 import numpy as np
 import xml.etree.ElementTree as et
 import matplotlib.pyplot as plt
+from math import pi
 ################################################################################
 
 
@@ -24,16 +25,23 @@ def XML_Extraction(XMLFILE):
 def Partition(GRID, I, n):
 		partition = []
 		if GRID == "Uniform":
-			print(range(I[0], I[1], 1))
-			#for i in range(I[0], I[1], 0.01):
-			#	partition.append
-		#for i in range(0, n):
-		#    GRID.append((1/2)*(I[0]+I[1]) + (1/2)*(I[1]-I[0]) * np.cos(((2*i+1) / (2*n+2)) * pi))
-		return 0
+			for i in range(0, n):
+				partition.append(i/n*(I[1]-I[0]) + I[0])
+		else:
+			for i in range(0, n):
+				partition.append((1/2)*(I[0]+I[1]) + (1/2)*(I[1]-I[0]) * np.cos(((2*i+1) / (2*n+2)) * pi))
+		return partition
 
 
 def Compute_Points(PREFIX, METHOD, GRID, f0, f1, I, X, n):
 	#for i in range()
+	x = I[0]
+	fname = "oppg3/"+PREFIX"_"+METHOD+"_"+GRID+"_4.txt"
+	file = open(fname, "w")
+	while x < I[1]:
+		x += 0.01
+		file.write(f0(x))
+	file.close()
 	return Q
 
 
