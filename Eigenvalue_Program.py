@@ -80,7 +80,7 @@ def Hessenberg(A,n): #fungere ikkje
 
 
 def QR_Shift(A,m,tol):
-		la = A[m][m]
+	la = A[m-1][m-1]
     t = 0
     e = 1 
     identitetsmatrise = np.identity(m)
@@ -89,8 +89,8 @@ def QR_Shift(A,m,tol):
             t += 1
             Q, R = sl.qr(A-la*identitetsmatrise)
             A = np.dot(R,Q) + la*identitetsmatrise
-            la = A[m][m]
-            e = A[m][m-1]
+            la = A[m-1][m-1]
+            e = A[m-1][m-2]
     return la,A,t
 
 
