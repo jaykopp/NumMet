@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<DATA>
+  <Dimension>2</Dimension>
+  <Function>(x**2-y**2)*math.e**(-(x**2+y**2)/2</Function>
+  <Gradient>
+    <D1>x*math.e**(0.5*(-x**2-y**2))*(-x**2+y**2+2)</D1>
+    <D2>y*math.e**(0.5*(-x**2-y**2))*(-x**2+y**2-2)</D2>
+  </Gradient>
+  <Hessian>
+    <H11>4*y</H11>
+    <H22>-2</H22>
+    <H12>4*x+4</H12>
+  </Hessian>
+</DATA>

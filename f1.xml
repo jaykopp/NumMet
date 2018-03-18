@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<DATA>
+  <Function>
+    <Zero>(2*x**2-1)/(x**4+1)</Zero>
+    <One></One>
+  </Function>
+  <Interval>
+    <Start>-10</Start>
+    <End>10</End>
+  </Interval>
+</DATA>

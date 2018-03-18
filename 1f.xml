@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<DATA>
+  <Dimension>3</Dimension>
+  <Function>xyz-x^2-y^2-z^2</Function>
+  <Gradient>
+    <D1>y*z-2*x</D1>
+    <D2>x*z-2*y</D2>
+    <D3>x*y-2*z</D3>
+  </Gradient>
+  <Hessian>
+    <H11>-2</H11>
+    <H22>-2</H22>
+    <H33>-2</H33>
+    <H12>z</H12>
+    <H13>y</H13>
+    <H23>x</H23>
+  </Hessian>
+</DATA>
+

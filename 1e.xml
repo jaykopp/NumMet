@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<DATA>
+  <Dimension>2</Dimension>
+  <Function>2x^2y+4xy-y^2</Function>
+  <Gradient>
+    <D1>4*(x+1)*y</D1>
+    <D2>2*(x**2+2*x-y)</D2>
+  </Gradient>
+  <Hessian>
+    <H11>4*y</H11>
+    <H22>-2</H22>
+    <H12>4*x+4</H12>
+  </Hessian>
+</DATA>
