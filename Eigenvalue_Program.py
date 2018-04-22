@@ -37,8 +37,17 @@ def Run_Simulation(matrix,algorithm):   	# tar inn et tall matrix og en string a
             powerfile.write(str(i)+"\t"+str(egen1)+"\t"+str(egen2)+"\t"+str(egen3)+"\n") # legger til i en fil
         powerfile.close()
         return 0
-    else:
-        return QR_Eig(matrix,len(matrix))
+    elif(algorithm == "QR_Eig"):
+        QRfile = open("QR_1.txt", "w")
+        for i in range(10,matrix):
+            B = Matrix_Generator([2,-7,20,-7,2],i) # vet ikke om jeg skal beholde dem her eller gjøre det på en bedre måte
+            C = Matrix_Generator([6,-3,-7,19,-7,-3,6],i) # todo er å gjøre denne bedre
+            eig1, it1 = QR_Eig(B, i)
+            eig2, it2 = QR_Eig(C, i)
+            QRfile.write(str(it1)+"\t"+str(eig1[0])+"\t"+str(it2)+"\t"+str(eig2[0])+"\n")
+        QRfile.close()
+        return 0
+    else: return 0
 
 
 
