@@ -35,16 +35,15 @@ def Run_Simulation(matrix,algorithm):
 
 
 
-def Power_Eig(A,x):
-    def Power_Eig(A,x):
-    r=0
-    
-    for it in range(100):
-        x_ny = np.dot(A, x)
-        x_ny_abs = nl.norm(x_ny, np.inf)
-        r = x_ny[1]/x[1]
-        x = x_ny / x_ny_abs
-    return r, it
+def Power_Eig(A, x):  # modified power method with normalization, p 399
+    k_max = 100       # steps
+    for k in range(k_max):
+        y = np.dot(A, x)
+        y_abs = nl.norm(y, np.inf)
+        r = y[1] / x[1] # y |-> y[1] is arbitrary linear functional
+        x = y / y_abs   # normalization
+        print(k, x, r)
+    print(0, x)
 
 
 def QR_Eig(A,n):
