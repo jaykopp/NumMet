@@ -74,24 +74,22 @@ def QR_Eig(A,n):
     return spectrum,N
 
 
-def Hessenberg(A,n): #fungere ikkje
-    z = []
-    e = [0]*n
-    u = []
+def Hessenberg(A, n):  # Returns the Hessenberg form of a matrix
+    z = np.array([0]*n)          #
+    e = np.array([0]*n)     # first basis vector
     e[0] = 1
     for k in range(1, n - 2):
-        for i in range(k+1,n):
-            z.append(A[i][k])
-        for i in range(0,n):
-            e.append((n-k))
-        u = z + np.sign(z[0])*nl.norm(z)*e
-        u /= nl.norm(u)
         for i in range(k + 1, n):
-            for j in range(k,n):
-                A[i][j] += -2*u*(np.transpose(u)*A[i][j])
+            z[i-(k+1)] = (A[i][k])
+        np.resize(e, (len(z),1))       # makes it same size as z
+        u = z + (np.sign(z[0]) * nl.norm(z)) * e
+        u = np.asarray(u / nl.norm(u))
+        for i in range(k + 1, n):
+            for j in range(k, n):
+                A[i][j] += -2 * np.dot(u, np.transpose(u)* A[i][j])
         for i in range(1, n):
-            for j in range(k+1,n):
-                A[i][j] += -2*(A[i][j]*u)*np.transpose(u)
+            for j in range(k + 1, n):
+                A[i][j] += -2 * np.dot((A[i][j] * u), np.transpose(u))
     return A
 
 
