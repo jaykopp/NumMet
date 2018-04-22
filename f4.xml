@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<DATA>
+  <Function>
+    <Zero>x/((x**(2))**(3/2)+1)</Zero>
+    <One>(-3x**2*(x**(2))**(1/2))+((x**(2))**(1/2))**3+1)/(((x**(2))**(1/2))**3+1)**2</One>
+  </Function>
+  <Interval>
+    <Start>-10</Start>
+    <End>10</End>
+  </Interval>
+</DATA>

@@ -84,7 +84,11 @@ def Lagrange_Newton_Coefficients(f0, X, n):
     for i in range(n):
         a[i] = f0(X[i])
     for j in range(1, n):
+<<<<<<< HEAD
         for i in range(n-1, j - 1, -1):
+=======
+        for i in range(n - 1, j - 1, -1):
+>>>>>>> 3dd9955390c3c2cb62b1bb923703ee103bf9a610
             a[i] = (a[i] - a[i-1]) / (X[i] - X[i-j]);
     return a
 
@@ -110,16 +114,17 @@ def Hermite_Newton_Coefficients(f0,f1,X,n):
         Q[2*i][1] = f1(X[i])
         if i != 0:
             Q[2*i][1] = (Q[2*i][0] - Q[2*i - 1][0])/(Z[2*i] - Z[2*i-1])
+            #print("under brøk",(Z[2*i] - Z[2*i-1]))
+            #print("over brøk", Q[2*i][0] - Q[2*i - 1][0])
     for i in range(2, k+1):
         for j in range(2, i+1):
-            if(Z[i] == Z[i-j]):
+            if (Z[i] - Z[i-j])<10**(-1):
                 Q[i][j] = f1(Z[i])
+                #print("om dei er like", f1(Z[i]))
             else:
                 Q[i][j] = (Q[i][j-1] - Q[i-1][j-1]) / (Z[i] - Z[i-j])
+                print("yes",(Q[i][j-1] - Q[i-1][j-1]) / (Z[i] - Z[i-j]))
     return Z, Q
-
-    #https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.polynomial.hermite.hermfit.html
-    return a,Z
 
 
 def Hermite_Newton_Evaluation(Q,a,n,t):
@@ -143,7 +148,6 @@ def Collect_Data(PREFIX,METHOD,GRID,I):
             DATA.append(points[:-1])# Remove final data point (it is empty)
     T = 8
     return DATA, T, PATH
-
 
 def Plot_Error(PATH, DATA, f0, T, I):
     plt.figure()
@@ -197,9 +201,15 @@ def Plot_Polynomials(PATH,DATA,f0,I):
     plt.plot(xPlot, zPlot)
     plt.show()
     return 0
+<<<<<<< HEAD
 for i in range(1, 19):
     Interpolation_Program("f1.xml", "Evaluation", "Hermite", "Uniform", i)
 Interpolation_Program("f1.xml", "Error", "Hermite", "Uniform", 4)
 Interpolation_Program("f1.xml", "Visualization", "Hermite", "Uniform", 4)
 
+=======
+for i in range(2, 21):
+    Interpolation_Program("f1.xml", "Evaluation", "Hermite", "Uniform", i)
+Interpolation_Program("f1.xml", "Error", "Hermite", "Uniform", 4)
+>>>>>>> 3dd9955390c3c2cb62b1bb923703ee103bf9a610
 #Interpolation_Program("f1.xml", "Evaluation", "Hermite", "Uniform", 4)
