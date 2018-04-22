@@ -108,6 +108,29 @@ def Plot_Iterations(algorithm, matrices):  # takes in text document with x and y
     plt.show()
     return 0
 
+def Plot_Iterations(algorithm, matrices):  # takes in text document with x and y in colums. plot them
+    dim, r_A, r_B, r_C = [], [], [], []
+    for line in open('power_1.txt', 'r'):
+        values = [float(s) for s in line.split()]
+        dim.append(values[0])
+        r_A.append(values[1])
+        r_B.append(values[2])
+        r_C.append(values[3])
+
+    fig, ax1 = plt.subplots()
+
+    fig.suptitle(r'Eigenvalues of $A$, $B$, and $C$', fontsize=16)
+
+    ax1.plot(dim, r_A, label=r'Numerical $r_{A}(n)$', lw=2)
+    ax1.plot(dim, r_B, label=r'Numerical $r_{B}(n)$', lw=2)
+    ax1.plot(dim, r_C, label=r'Numerical $r_{C}(n)$', lw=2)
+    ax1.set_xlabel(r'$n \; [\mathrm{#}]$', fontsize=20)
+    ax1.set_ylabel(r'$r(n) \; [\mathrm{#}]$', fontsize=20)
+    ax1.legend(loc='best')
+    ax1.grid()
+    plt.show()
+    return 0
+
 #========================= Anders' forsøk på ting ========================= 
 
 def QR_Eig(A, n):
