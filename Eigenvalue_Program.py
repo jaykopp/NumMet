@@ -23,11 +23,15 @@ def Matrix_Generator(matrix,n):
     return A
 
 
-def Run_Simulation(matrix,algorithm):
-    if(algorithm == "Power_Eig"):
-        x = []
-        for i in range(len(matrix)):
-            x.append(1 / (len(matrix)) ** (1 / 2))
+def Run_Simulation(matrix,algorithm):   	# tar inn et tall matrix og en string algorithm
+    if(algorithm == "Power_Eig"):       
+        powerfile = open("Power_1.txt","w") 	#åpner fil for å legge til data
+        for i in range(10,matrix):
+            x = [1/matrix**(1/2)]*matrix    	#lager en vektor med lengde matrix med hvert element 1/matrix^1/2
+            A = Matrix_Generator([4,11,4],matrix)
+            egen, it = Power_Eig(A, x)
+            powerfile.write(str(it)+"\t"+str(egen)+"\n")
+        powerfile.close()
         return Power_Eig(matrix, x)
     else:
         return QR_Eig(matrix,len(matrix))
