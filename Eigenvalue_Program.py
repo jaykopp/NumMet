@@ -54,6 +54,15 @@ def Power_Eig(A, x):  # modified power method with normalization, p 399
     print(0, x)
 
 
+def Power_Eig(A,x): 		#Jacobs Power_Eig
+    r=0
+    for it in range(10000):
+        x_ny = np.dot(A, x)
+        x_ny_abs = nl.norm(x_ny, np.inf)
+        r = x_ny[1]/x[1]
+        x = x_ny / x_ny_abs
+    return r, it
+
 def QR_Eig(A,n):
 		spectrum = [0]*n
     N = 0
