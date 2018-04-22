@@ -66,6 +66,7 @@ def Lagrange_Newton_Coefficients(f0, X, n):
 
 
 def Lagrange_Newton_Evaluation(X, a, n, t):
+    ## TODO: Fix this
     X.astype(float)
     temp = a[n]
     for i in range(n - 1, 0, -1):
