@@ -99,3 +99,49 @@ def QR_Shift(A,m,tol):
 
 def Plot_Iterations(algorithm,matrices):
     return 0
+
+#========================= Anders' forsøk på ting ========================= 
+
+def QR_Eig(A, n):
+    L = np.zeros(n)  # vector with zeroes
+    N = 0            # number of steps in QR_shift
+    tol = 10 ** -14  # tolerance
+    A = Hessenberg(A, n)
+    for i in range(n, 1):
+        L[i], A, t = QR_Shift(np.resize(A, (i, i)), i, tol)
+        N += t
+    return L, N
+
+
+def Hessenberg(A, n):  # Returns the Hessenberg form of a matrix
+    z = []          #
+    e = [0] * n     # first basis vector
+    e[0] = 1
+    for k in range(1, n - 2):
+        for i in range(k + 1, n):
+            z.append(A[i][k])
+        np.resize(e, n-k)       # makes it same size as z
+        u = z + (np.sign(z[0]) * nl.norm(z)) * e
+        u = nl.norm(u)
+        for i in range(k + 1, n):
+            for j in range(k, n):
+                A[i][j] += -2 * u * (np.transpose(u) * A[i][j])
+        for i in range(1, n):
+            for j in range(k + 1, n):
+                A[i][j] += -2 * (A[i][j] * u) * np.transpose(u)
+    return A
+
+
+def QR_Shift(A, m, tol):
+    la = A[m - 1][m - 1]  # lambda
+    t = 0                 # number of iterations
+    e = 1
+    I = np.identity(m)    # mxm identity matrix
+    if m > 1:
+        while e > tol:
+            t += 1
+            Q, R, P = sl.qr(A - la*I, pivoting=False)
+            A = np.dot(R, Q) + la * I
+            la = A[m - 1][m - 1]
+            e = A[m - 1][m - 2]
+    return la, A, t
