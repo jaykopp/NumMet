@@ -24,15 +24,19 @@ def Matrix_Generator(matrix,n):
 
 
 def Run_Simulation(matrix,algorithm):   	# tar inn et tall matrix og en string algorithm
-    if(algorithm == "Power_Eig"):       
-        powerfile = open("Power_1.txt","w") 	#åpner fil for å legge til data
+    if(algorithm == "Power_Eig"):       # og en string algorithm
+        powerfile = open("Power_1.txt","w") #åpner fil for å legge til data
         for i in range(10,matrix):
-            x = [1/matrix**(1/2)]*matrix    	#lager en vektor med lengde matrix med hvert element 1/matrix^1/2
-            A = Matrix_Generator([4,11,4],matrix)
-            egen, it = Power_Eig(A, x)
-            powerfile.write(str(it)+"\t"+str(egen)+"\n")
+            x = [1/i**(1/2)]*i   #lager en vektor med lengde matrix med hvert element 1/matrix^1/2
+            A = Matrix_Generator([4,11,4],i) # denne er bare her for å teste
+            B = Matrix_Generator([2,-7,20,-7,2],i) # vet ikke om jeg skal beholde dem her eller gjøre det på en bedre måte
+            C = Matrix_Generator([6,-3,-7,19,-7,-3,6],i) # todo er å gjøre denne bedre
+            egen1, it = Power_Eig(A, x)
+            egen2, it = Power_Eig(B, x)
+            egen3, it = Power_Eig(C, x)
+            powerfile.write(str(i)+"\t"+str(egen1)+"\t"+str(egen2)+"\t"+str(egen3)+"\n") # legger til i en fil
         powerfile.close()
-        return Power_Eig(matrix, x)
+        return 0
     else:
         return QR_Eig(matrix,len(matrix))
 
