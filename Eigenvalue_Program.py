@@ -97,7 +97,15 @@ def QR_Shift(A,m,tol):
     return la,A,t
 
 
-def Plot_Iterations(algorithm,matrices):
+def Plot_Iterations(algorithm, matrices):  # takes in text document with x and y in colums. plot them
+    x, y = [], []
+    for line in open('power_1.txt', 'r'):
+        values = [float(s) for s in line.split()]
+        x.append(values[0])
+        y.append(values[1])
+
+    plt.plot(x, y)
+    plt.show()
     return 0
 
 #========================= Anders' forsøk på ting ========================= 
