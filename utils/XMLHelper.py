@@ -3,12 +3,14 @@ def generateMatrixString(d,u):
 	s = "["
 	n = len(d)
 	j = 0
+	l = 0
 	for i in range(n):
 		if i > 0:
 			s += ","
 		s += "["
 		for k in range(0, i):
-			s += "0,"
+			s += u[l] + ","
+			l += 1
 		s += d[i]
 		for k in range(i, n -1):
 			s += "," + u[j]

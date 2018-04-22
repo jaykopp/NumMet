@@ -10,39 +10,47 @@ from math import pi
 
 
 def Interpolation_Program(XMLFILE, PROGRAM, METHOD, GRID, n):
-	#if PROGRAM == "Evaluation":
-	f, I = XML_Extraction(XMLFILE)
-	Partition("Uniform", I, 5)
-	return 0
+    #if PROGRAM == "Evaluation":
+    f0, f1, I = XML_Extraction(XMLFILE)
+    if(PROGRAM == "Evaluation"):
+        PREFIX = "f1"
+        Compute_Points(PREFIX, METHOD, GRID, f0, f1, I, 0, n)
+    return 0
 
 def XML_Extraction(XMLFILE):
     file = et.parse(XMLFILE)
     root = file.getroot()
-    f = lambda x : eval(root[0][0].text)
+    f0 = lambda x : eval(root[0][0].text)
+    f1 = lambda x : eval(root[0][1].text)
     I = [int(root[1][0].text), int(root[1][1].text)]
-    return f, I
+    return f0, f1, I
 
 def Partition(GRID, I, n):
-		partition = []
-		if GRID == "Uniform":
-			for i in range(0, n):
-				partition.append(i/n*(I[1]-I[0]) + I[0])
-		else:
-			for i in range(0, n):
-				partition.append((1/2)*(I[0]+I[1]) + (1/2)*(I[1]-I[0]) * np.cos(((2*i+1) / (2*n+2)) * pi))
-		return partition
+        partition = []
+        if GRID == "Uniform":
+            for i in range(0, n):
+                partition.append(i/(n-1)*(I[1]-I[0]) + I[0]) #Alternative: 1/n (is without last point)
+        else:
+            for i in range(1, n+1):
+                partition.append((1/2)*(I[0]+I[1]) + (1/2)*(I[1]-I[0]) * np.cos(((2*i-1) / (2*n)) * pi))
+            '''for i in range(1, n):
+                partition.append((1/2)*(I[0]+I[1]) + (1/2)*(I[1]-I[0]) * np.cos(((2*i+1) / (2*n+2)) * pi))'''
+        return partition
 
 
 def Compute_Points(PREFIX, METHOD, GRID, f0, f1, I, X, n):
-	#for i in range()
-	x = I[0]
-	fname = "oppg3/"+PREFIX"_"+METHOD+"_"+GRID+"_4.txt"
-	file = open(fname, "w")
-	while x < I[1]:
-		x += 0.01
-		file.write(f0(x))
-	file.close()
-	return Q
+    #for i in range()
+    #
+    grid = Partition(GRID, I, 5)
+    fname = "oppg3/"+PREFIX+"_"+METHOD+"_"+GRID+"_4.txt"
+    file = open(fname, "w")
+    x = I[0]
+    while x < I[1]:
+        x += 0.01
+        file.write(str(f0(x)))
+        file.write(";")
+    file.close()
+    return "H"
 
 
 def Lagrange_Newton_Coefficients(f0, X, n):
@@ -80,9 +88,9 @@ def Collect_Data(PREFIX,METHOD,GRID,I):
 
 
 def Plot_Error(PATH, DATA, f0, T):
-	return 0
+    return 0
 
 def Plot_Polynomials(PATH,DATA,f0,X):
-	return 0
+    return 0
 
-Interpolation_Program("f1.xml", "Evaluation", "", "", 10)
+Interpolation_Program("f1.xml", "Evaluation", "Lagrange", "Uniform", 10)

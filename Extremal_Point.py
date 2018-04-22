@@ -82,7 +82,7 @@ def Newton_Iteration(Df,Hf,X0):
 	## Newton iteration where X = X - Hf(X)^(-1)*Df(X)
 	for n in range(nmax):
 		Dx = Df(X)
-		Xn = backSubstitute(Hf(X), Dx)
+		Xn = nl.tensorsolve(Hf(X), Dx)
 		X  = X - Xn
 		print(n, X, Dx)
 		if vectorAbs(Xn) < 10**(-14):
@@ -99,7 +99,8 @@ def Newton_Iteration(Df,Hf,X0):
 def Classify_Point(f,Hf,X):
 	A = Hf(X)
 	evalues = nl.eigvals(A)
-
+	print(A)
+	print(evalues)
 	allPositives = True
 	allNegatives = True
 	noNulls = True
@@ -121,5 +122,6 @@ def Classify_Point(f,Hf,X):
 	else:
 		print(X, "Is unclassified")
 
-
-Extremal_Points("1c.xml", [-.5, -.5])
+#Extremal_Points("1c.xml", [-.5, -.5])
+#Extremal_Points("1c.xml", [-1.0, -0.5])
+#Extremal_Points("1c.xml", [-1.95, -0.05])
