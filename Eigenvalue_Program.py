@@ -119,7 +119,7 @@ def Plot_Iterations(algorithm, matrices):  # takes in text document with x and y
 
     fig, ax1 = plt.subplots()
 
-    fig.suptitle(r'Eigenvalues of $A$, $B$, and $C$', fontsize=16)
+    fig.suptitle(r'Largest eigenvalues of $A$, $B$, and $C$', fontsize=16)
 
     ax1.plot(dim, r_A, label=r'Numerical $r_{A}(n)$', lw=2)
     ax1.plot(dim, r_B, label=r'Numerical $r_{B}(n)$', lw=2)
