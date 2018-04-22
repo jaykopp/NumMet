@@ -6,21 +6,30 @@ import csv
 import numpy as np
 import xml.etree.ElementTree as et
 import matplotlib.pyplot as plt
-from math import pi, sqrt
+import math
 ################################################################################
 
-#heko
+##
+## Main program to perform interpolation
+## n is the degree of the polynom
+##
 def Interpolation_Program(XMLFILE, PROGRAM, METHOD, GRID, n):
-    #if PROGRAM == "Evaluation":
+    
     f0, f1, I = XML_Extraction(XMLFILE)
+    
+    n += 1 ## Add 1 to degree to include extra point in partition
+
     PREFIX = XMLFILE.split(".")[0]
+
     if(PROGRAM == "Evaluation"):
-        X = Partition(GRID, I, n+1)
+        X = Partition(GRID, I, n)
         Compute_Points(PREFIX, METHOD, GRID, f0, f1, I, X, n)
     else:
         DATA, T, PATH = Collect_Data(PREFIX,METHOD,GRID,4)
         if(PROGRAM == "Error"):
             Plot_Error(PATH, DATA, f0, T, I)
+        else:
+            Plot_Polynomials(PATH,DATA,f0,I)
     return 0
 
 def XML_Extraction(XMLFILE):
@@ -33,14 +42,15 @@ def XML_Extraction(XMLFILE):
 
 def Partition(GRID, I, n):
         partition = []
+        e = I[1]
+        s = I[0]
         if GRID == "Uniform":
             for i in range(0, n):
-                partition.append(i/(n-1)*(I[1]-I[0]) + I[0]) #Alternative: 1/n (is without last point)
+                partition.append(i/(n-1)*(e-s) + s)
         else:
-            for i in range(1, n+1):
-                partition.append((1/2)*(I[0]+I[1]) + (1/2)*(I[1]-I[0]) * np.cos(((2*i-1) / (2*n)) * pi))
-            '''for i in range(1, n):
-                partition.append((1/2)*(I[0]+I[1]) + (1/2)*(I[1]-I[0]) * np.cos(((2*i+1) / (2*n+2)) * pi))'''
+            for i in range(1, n):
+                partition.append((1/2)*(s+e) + (1/2)*(e-s) * np.cos(((2*i-1) / (2*n)) * math.pi))
+        print(partition)
         return partition
 
 
@@ -69,20 +79,22 @@ def Compute_Points(PREFIX, METHOD, GRID, f0, f1, I, X, n):
     return
 
 def Lagrange_Newton_Coefficients(f0, X, n):
+    n = len(X)
     a = [0]*n
     for i in range(n):
         a[i] = f0(X[i])
     for j in range(1, n):
-        for i in range(n - 1, j - 1, -1):
-            print(X[i] - X[i-j])
+        for i in range(n-1, j - 1, -1):
             a[i] = (a[i] - a[i-1]) / (X[i] - X[i-j]);
     return a
 
 
 def Lagrange_Newton_Evaluation(X, a, n, t):
+    n = len(X)
     temp = a[n-1]
-    for i in range(n - 1, -1, -1):
+    for i in range(n - 2, -1, -1):
         temp = temp*(t - X[i]) + a[i]
+    #print(temp)
     return temp
 
 
@@ -123,39 +135,71 @@ def Hermite_Newton_Evaluation(Q,a,n,t):
 def Collect_Data(PREFIX,METHOD,GRID,I):
     DATA = []
     PATH = "oppg3/"+PREFIX+"/"+METHOD+"_"+GRID+"/"
-    for i in range(2, 21):
+    for i in range(2, 7):
         fname = PATH + PREFIX+"_"+METHOD+"_"+GRID+"_"+str(i)+".txt"
 
         with open(fname) as file:
             points = file.readline().split(";")
-            DATA.append(points)
-    T = 0
+            DATA.append(points[:-1])# Remove final data point (it is empty)
+    T = 8
     return DATA, T, PATH
 
 
 def Plot_Error(PATH, DATA, f0, T, I):
-    x = I[0]
+    plt.figure()
+    plt.xlabel('Plynomial Degree')
+    plt.ylabel('Error')
+    plt.title('Error for polynomials in ' + PATH)
+
     yPlot = []
     xPlot = []
+    x = I[0] # start position
+
     for j in range(len(DATA)):
-        s = 0
+        s = 0 # sumation
         for i in range(len(DATA[j])):
-            if(DATA[j][i] == ""):
-                break
             x = i * 0.01 + I[0]
             s += (f0(x) - float(DATA[j][i]))**2
-        s /= len(DATA[j])
-        s = sqrt(s)
-        yPlot.append(s)
-        xPlot.append(j)
-    plt.plot(xPlot, yPlot)
-    print(yPlot)
+        s /= len(DATA[j])    # Divide sum by lengt to get average
+        error = math.sqrt(s) # Square s to get square error
+        yPlot.append(error)  # Add error to list for graph
+        xPlot.append(j + 2)  # Add degree of polynom (starts at 2 not 0, so add 2)
+    plt.plot(xPlot, yPlot) 
     plt.show()
     return 0
 
-def Plot_Polynomials(PATH,DATA,f0,X):
+def Plot_Polynomials(PATH,DATA,f0,I):
+    plt.subplots()
+    plt.xlabel('X values')
+    plt.ylabel('Y Values')
+    plt.title('Visualization for ' + PATH)
+
+    xPlot = []
+    yPlot = []
+    zPlot = []
+
+    for i in range(len(DATA)):
+        # Loop through datasets (each different polynom)
+        yPlot = [] 
+        for j in range(len(DATA[i])):
+
+            if i == 0:
+                # Though first loop, add target value function and x values
+                x = j * 0.01 + I[0]
+                xPlot.append(x)
+                zPlot.append(f0(x))
+
+            ## Append value at point
+            yPlot.append(float(DATA[i][j]))
+        # Plot the dataset
+        plt.plot(xPlot, yPlot)
+    # Plot the target function
+    plt.plot(xPlot, zPlot)
+    plt.show()
     return 0
-for i in range(2, 21):
-    Interpolation_Program("f1.xml", "Evaluation", "Lagrange", "Cheboshev", i)
-Interpolation_Program("f1.xml", "Error", "Lagrange", "Cheboshev", 4)
+for i in range(1, 19):
+    Interpolation_Program("f1.xml", "Evaluation", "Hermite", "Uniform", i)
+Interpolation_Program("f1.xml", "Error", "Hermite", "Uniform", 4)
+Interpolation_Program("f1.xml", "Visualization", "Hermite", "Uniform", 4)
+
 #Interpolation_Program("f1.xml", "Evaluation", "Hermite", "Uniform", 4)
