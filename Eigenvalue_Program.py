@@ -77,8 +77,8 @@ def QR_Eig(A,n):
     N = 0
     tol = 10**-14
     A = Hessenberg(A,n)
-    for i in range(n,1):
-        spectrum, A, t = QR_Shift(A,i,tol)
+    for i in range(n-1,0,-1):
+        spectrum, A, t = QR_Shift(A,i-1,tol)
         N += t
     return spectrum,N
 
