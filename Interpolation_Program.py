@@ -23,7 +23,6 @@ def Interpolation_Program(XMLFILE, PROGRAM, METHOD, GRID, n):
 
     if(PROGRAM == "Evaluation"):
         X = Partition(GRID, I, n)
-        print(X)
         Compute_Points(PREFIX, METHOD, GRID, f0, f1, I, X, n)
     else:
         DATA, T, PATH = Collect_Data(PREFIX,METHOD,GRID,4)
@@ -111,12 +110,11 @@ def Hermite_Newton_Coefficients(f0,f1,X,n):
             Q[2*i][1] = (Q[2*i][0] - Q[2*i - 1][0])/(Z[2*i] - Z[2*i-1])
     for i in range(2, k+1):
         for j in range(2, i+1):
-            if (Z[i] - Z[i-j])<10**(-1):
+            if math.fabs(Z[i] - Z[i-j])<10**(-10):
                 Q[i][j] = f1(Z[i])
             else:
                 Q[i][j] = (Q[i][j-1] - Q[i-1][j-1]) / (Z[i] - Z[i-j])
     return Z, Q
-
 
 def Hermite_Newton_Evaluation(Q,a,n,t):
     k = 2 * n + 1
@@ -158,7 +156,7 @@ def Plot_Error(PATH, DATA, f0, T, I):
         s /= len(DATA[j])    # Divide sum by lengt to get average
         error = math.sqrt(s) # Square s to get square error
         yPlot.append(error)  # Add error to list for graph
-        xPlot.append(j + 2)  # Add degree of polynom (starts at 2 not 0, so add 2)
+        xPlot.append(2*j + 2)  # Add degree of polynom (starts at 2 not 0, so add 2)
     plt.plot(xPlot, yPlot) 
     plt.show()
     return 0
@@ -197,9 +195,13 @@ def Plot_Polynomials(PATH,DATA,f0,I):
     plt.show()
     return 0
 
-for i in [2,4,6,8]:
-    Interpolation_Program("f1.xml", "Evaluation", "Lagrange", "Uniform", i)
-Interpolation_Program("f1.xml", "Error", "Lagrange", "Uniform", 4)
-Interpolation_Program("f1.xml", "Visualization", "Lagrange", "Uniform", 4)
+for file in ["f1.xml", "f2.xml", "f3.xml", "f4.xml"]:
+    for method in ["Lagrange", "Hermite"]:
+        for partition in ["Chebyshev", "Uniform"]:
+
+            for i in [2,4,6,8]:
+                Interpolation_Program(file, "Evaluation", method, partition, i)
+            Interpolation_Program(file, "Error", method, partition, 4)
+            Interpolation_Program(file, "Visualization", method, partition, 4)
 
 #Interpolation_Program("f1.xml", "Evaluation", "Hermite", "Chebyshev", 4)
