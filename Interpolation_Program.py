@@ -101,17 +101,18 @@ def Hermite_Newton_Coefficients(f0,f1,X,n):
     Z = np.zeros(2*(n))
     for i in range(0,n):
         Z[2*i] = X[i]
-        Z[2*i+1] = X[i]
+        Z[2*i+1] = X[i] #X =  [3, 4, 5]
+                        #Z = [3, 3, 4, 4, 5, 5]
     for i in range(2*n):
-        a[i] = f0(Z[i])
+        a[i] = f0(Z[i]) #a = [f(3), f(3), f(4), f(4), f(5), f(5)]
 
     for j in range(1,2*(n)):
         for i in range(2*(n)-1, j-1, -1):
             if math.fabs(Z[i]-Z[i-j]) < 10**(-10): #Almost identical
-                a[i] = f1(Z[j-1])
+                a[i] = (a[i]-a[i-1])/f1(Z[j-1])
             else:
                 a[i] = (a[i]-a[i-1])/(Z[i]-Z[i-j])
-
+    print(a, Z)
     return a,Z
 
 
@@ -136,9 +137,11 @@ def Collect_Data(PREFIX,METHOD,GRID,I):
 
 def Plot_Error(PATH, DATA, f0, T, I):
     plt.figure()
+    NAME = PATH.replace("oppg3/", "")
+    NAME = NAME.replace("/", "_")
+    NAME = NAME + "_error.png"
     plt.xlabel('Plynomial Degree')
     plt.ylabel('Error')
-    plt.suptitle('Error for polynomials in ' + PATH)
 
     yPlot = []
     xPlot = []
@@ -154,15 +157,15 @@ def Plot_Error(PATH, DATA, f0, T, I):
         yPlot.append(error)  # Add error to list for graph
         xPlot.append(2*j + 2)  # Add degree of polynom (starts at 2 not 0, so add 2)
     plt.plot(xPlot, yPlot) 
-    plt.show()
+    plt.savefig("img/"+NAME)
     return 0
 
 def Plot_Polynomials(PATH,DATA,f0,I):
     plt.subplots()
-    plt.suptitle('Visualization for ' + PATH)
-
-    plt.xlabel('X values')
-    plt.ylabel('Y Values')
+    #plt.suptitle('Visualization for ' + PATH)
+    NAME = PATH.replace("oppg3/", "")
+    NAME = NAME.replace("/", "_")
+    NAME = NAME + "_graph.png"
     xPlot = []
     yPlot = []
     zPlot = []
@@ -188,11 +191,11 @@ def Plot_Polynomials(PATH,DATA,f0,I):
         plt.plot(xPlot, yPlot, label='Degree '+str(2*i + 2), lw=2)
     
     plt.legend()
-    plt.show()
+    plt.savefig("img/"+NAME)
     return 0
 
 for file in ["f1.xml", "f2.xml", "f3.xml", "f4.xml"]:
-    for method in ["Hermite"]:
+    for method in ["Lagrange", "Hermite"]:
         for partition in ["Chebyshev", "Uniform"]:
 
             for i in [2,4,6,8]:
