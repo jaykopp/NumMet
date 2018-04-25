@@ -45,14 +45,14 @@ def Run_Simulation(matrix,algorithm):   	# tar inn et tall matrix og en string a
             C = Matrix_Generator([6,-3,-7,19,-7,-3,6],i) # todo er å gjøre denne bedre
             eig1, it1 = QR_Eig(B, i)
             eig2, it2 = QR_Eig(C, i)
-            QRfile.write(i)+"\t"+str(it1)+"\t"+str(i)+"\t"+str(it2)+"\n")
+            QRfile.write(str(i)+"\t"+str(it1)+"\t"+str(i)+"\t"+str(it2)+"\n")
         QRfile.close()
         return 0
     else: return 0
 
 
 def Power_Eig(A,x):
-    r = 0
+    r = 1
     it = 0
     
     while nl.norm(np.dot(A,x) - r*x) > 10**-14:
