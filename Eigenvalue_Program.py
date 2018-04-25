@@ -55,7 +55,7 @@ def Power_Eig(A,x):
     r = 1
     it = 0
     
-    while nl.norm(np.dot(A,x) - r*x) > 10**-14:
+    while nl.norm(np.dot(A,x) - np.dot(x,r)) > 10**-14:
         it += 1
         y = np.dot(A, x)
         y_abs = nl.norm(y, np.inf)
