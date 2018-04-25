@@ -113,57 +113,6 @@ def QR_Shift(A, m, tol):
             e = A[m - 1][m - 2]
     return la, A, t
 
-
-def Plot_Iterations(algorithm, matrices):  # takes in text document with x and y in colums. plot them
-    if algorithm == "Power_Eig":
-        dim, r_A, r_B, r_C = [], [], [], []
-        for line in open('power_1.txt', 'r'):
-            values = [float(s) for s in line.split()]
-            dim.append(values[0])
-            r_A.append(values[1])
-            r_B.append(values[2])
-            r_C.append(values[3])
-
-        fig, ax1 = plt.subplots()
-
-        fig.suptitle(r'Eigenvalues of $A$, $B$, and $C$', fontsize=16)
-
-        ax1.plot(dim, r_A, label=r'Numerical $r_{A}(n)$', lw=2)
-        ax1.plot(dim, r_B, label=r'Numerical $r_{B}(n)$', lw=2)
-        ax1.plot(dim, r_C, label=r'Numerical $r_{C}(n)$', lw=2)
-        ax1.set_xlabel(r'$n$', fontsize=20)
-        ax1.set_ylabel(r'$r(n)$', fontsize=20)
-        ax1.legend(loc='best')
-        ax1.grid()
-        plt.savefig("Power_plot.png",transparent = True)	
-        plt.show()
-	return 0
-    elif algorithm == "QR_Eig":
-        N_B, L0_B, N_C, L0_C = [], [], [], []
-        for line in open('QR_1.txt', 'r'):
-            values = [float(s) for s in line.split()]
-            N_B.append(values[0])
-            L0_B.append(values[1])
-            N_C.append(values[2])
-            L0_C.append(values[3])
-
-        fig, ax1 = plt.subplots()
-
-        fig.suptitle(r'$B$, and $C$', fontsize=16)
-
-        ax1.plot(N_B, L0_B, label=r'Numerical $L_{B}(N)$', lw=2)
-        ax1.plot(N_C, L0_C, label=r'Numerical $L_{C}(N)$', lw=2)
-        ax1.set_xlabel(r'$ N $', fontsize=20)
-        ax1.set_ylabel(r'$ lambdas $', fontsize=20)
-        ax1.legend(loc='best')
-        ax1.grid()
-        plt.savefig("QR_plot.png", transparent = True)
-        plt.show()
-	return 0
-	
-    else:
-	return 0
-
 def Plot_Iterations(algorithm, matricies): # matricies = [1], [2], [3], [1, 2], [1, 3], [2, 3], [1,2,3]
     data = [] # eller [[]*(len(matricies))] ?
     t = 0
