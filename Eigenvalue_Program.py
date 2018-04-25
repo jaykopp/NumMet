@@ -79,10 +79,10 @@ def QR_Eig(A, n):
 def Hessenberg(A, n):  # Returns the Hessenberg form of a matrix
     for k in range(1, n - 2):
         z = A[k + 1:n, k]
-        e = np.array([0] * (n-k))
+        e = np.array([0] * (n-k-1))
         e[0] = 1
-        u = z + (np.sign(z[0]) * z.dot(z)) * e
-        u = np.asarray(u / u.dot(u))
+        u = z + (np.sign(z[0]) * np.sqrt(z.dot(z))) * e
+        u = np.asarray(u / np.sqrt(u.dot(u)))
         A[k + 1:n, k:n] = A[k + 1:n, k:n] - 2 * np.outer(u, np.dot(np.transpose(u), A[k + 1:n, k:n]))
         A[1:n, k + 1:n] = A[1:n, k + 1:n] - 2 * np.outer(np.dot(A[1:n, k + 1:n], u), np.transpose(u))
     return A
@@ -124,6 +124,7 @@ def Plot_Iterations(algorithm, matrices):  # takes in text document with x and y
         ax1.set_ylabel(r'$r(n)$', fontsize=20)
         ax1.legend(loc='best')
         ax1.grid()
+        plt.savefig("Power_plot.png",transparent = True)	
         plt.show()
 	return 0
     elif algorithm == "QR_Eig":
@@ -145,7 +146,9 @@ def Plot_Iterations(algorithm, matrices):  # takes in text document with x and y
         ax1.set_ylabel(r'$ lambdas $', fontsize=20)
         ax1.legend(loc='best')
         ax1.grid()
+        plt.savefig("QR_plot.png", transparent = True)
         plt.show()
 	return 0
 	
-    return 0
+    else:
+	return 0
