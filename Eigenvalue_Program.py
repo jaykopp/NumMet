@@ -80,13 +80,13 @@ def QR_Eig(A, n):
 
 def Hessenberg(A, n):  # Returns the Hessenberg form of a matrix
     for k in range(1, n - 2):
-        z = A[k + 1:n, k]
+        z = A[k + 1:n+1, k]
         e = np.array([0] * (n-k-1))
         e[0] = 1
         u = z + (np.sign(z[0]) * np.sqrt(z.dot(z))) * e
         u = np.asarray(u / np.sqrt(u.dot(u)))
-        A[k + 1:n, k:n] = A[k + 1:n, k:n] - 2 * np.outer(u, np.dot(np.transpose(u), A[k + 1:n, k:n]))
-        A[1:n, k + 1:n] = A[1:n, k + 1:n] - 2 * np.outer(np.dot(A[1:n, k + 1:n], u), np.transpose(u))
+        A[k + 1:n+1, k:n+1] = A[k + 1:n+1, k:n+1] - 2 * np.outer(u, np.dot(np.transpose(u), A[k + 1:n+1, k:n+1]))
+        A[1:n+1, k + 1:n+1] = A[1:n+1, k + 1:n+1] - 2 * np.outer(np.dot(A[1:n+1, k + 1:n+1], u), np.transpose(u))
     return A
 
 
