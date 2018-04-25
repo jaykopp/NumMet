@@ -157,3 +157,60 @@ def Plot_Iterations(algorithm, matrices):  # takes in text document with x and y
 	
     else:
 	return 0
+
+def Plot_Iterations(algorithm, matricies): # matricies = [1], [2], [3], [1, 2], [1, 3], [2, 3], [1,2,3]
+    data = [] # eller [[]*(len(matricies))] ?
+    t = 0
+    fig, ax1 = plt.subplots()
+    if algorithm == "Power_Eig":
+        fig.suptitle(r'Iterations over matrices of size $n$', fontsize=16)
+        for i in matricies:
+            size = []
+            iter = []
+            for line in open("Power_"+str(i)+".txt", "r"):
+                d = [float(s) for s in line.split()]
+                size.append(d[0])
+                iter.append(d[1])
+            data.append(size)
+            data.append(iter)
+            
+            ax1.plot(data[t], data[t+1]) 
+            t += 2
+        """
+        for i in len(matricies):
+            if matricies[i] == 1:
+                matricies[i] = "A"
+            elif matricies[i] == 2:
+                matricies[i] = "B"
+            elif matricies[i] == 3:
+                matricies[i] = "C"
+        """
+        ax1.set_xlabel(r'$size of matrix$', fontsize=20)
+        ax1.set_ylabel(r'$iterations$', fontsize=20)
+        ax1.legend(loc='best')
+        ax1.grid()
+        plt.savefig("Power_plot.png", transparent=True)
+        plt.show()
+        return 0
+    
+    elif algorithm == "QR_Eig":
+        fig.suptitle(r'Iterations over matrices of size $n$', fontsize=16)
+        for i in matricies:
+            size = []
+            iter = []
+            for line in open("QR_" + str(i) + ".txt", "r"):
+                d = [float(s) for s in line.split()]
+                size.append(d[0])
+                iter.append(d[1])
+            data.append(size)
+            data.append(iter)
+
+            ax1.plot(data[t], data[t+1])
+            t += 2
+
+        ax1.set_xlabel(r'$size of matrix$', fontsize=20)
+        ax1.set_ylabel(r'$iterations$', fontsize=20)
+        ax1.legend(loc='best')
+        ax1.grid()
+        plt.savefig("QR_plot.png", transparent=True)
+        plt.show()
