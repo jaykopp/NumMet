@@ -12,8 +12,10 @@ from scipy.sparse import diags
 
 
 def Eigenvalue_Program(program,algorithm,matrix):
+    for i in matrix:
+        Run_Simulation(i, algorithm)
+    PLot_Iterations(algorithm, matrix)
     return 0
-
 
 def Matrix_Generator(matrix,n):
     A = np.zeros((n, n)) #lager 0matrise
