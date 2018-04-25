@@ -4,17 +4,42 @@
     <list default="true" id="1ad79cbb-42b3-4949-b266-c4832e5861f5" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Interpolation_Program.py" afterPath="$PROJECT_DIR$/Interpolation_Program.py" />
-      <change beforePath="$PROJECT_DIR$/f2.xml" afterPath="$PROJECT_DIR$/f2.xml" />
-      <change beforePath="$PROJECT_DIR$/f3.xml" afterPath="$PROJECT_DIR$/f3.xml" />
-      <change beforePath="$PROJECT_DIR$/f4.xml" afterPath="$PROJECT_DIR$/f4.xml" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Hermite_Chebyshev/f1_Hermite_Chebyshev_16.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Hermite_Chebyshev/f1_Hermite_Chebyshev_16.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f1/Hermite_Chebyshev/f1_Hermite_Chebyshev_2.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Hermite_Chebyshev/f1_Hermite_Chebyshev_2.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f1/Hermite_Chebyshev/f1_Hermite_Chebyshev_4.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Hermite_Chebyshev/f1_Hermite_Chebyshev_4.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f1/Hermite_Chebyshev/f1_Hermite_Chebyshev_6.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Hermite_Chebyshev/f1_Hermite_Chebyshev_6.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f1/Hermite_Chebyshev/f1_Hermite_Chebyshev_8.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Hermite_Chebyshev/f1_Hermite_Chebyshev_8.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_10.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_10.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_12.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_12.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_14.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_14.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_16.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_16.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_18.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_18.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_2.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_2.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_20.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_20.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_4.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_4.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_6.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_6.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_8.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Hermite_Uniform/f1_Hermite_Uniform_8.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_10.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_10.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_12.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_12.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_14.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_14.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_16.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_16.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_18.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_18.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_2.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_2.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_20.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_20.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_4.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_4.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_6.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_6.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_8.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Chebyshev/f1_Lagrange_Chebyshev_8.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_10.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_10.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_12.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_12.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_14.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_14.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_16.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_16.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_18.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_18.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_2.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_2.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_20.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_20.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_4.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_4.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_6.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_6.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_8.txt" afterPath="$PROJECT_DIR$/oppg3/f1/Lagrange_Uniform/f1_Lagrange_Uniform_8.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f2/Hermite_Chebyshev/f2_Hermite_Chebyshev_16.txt" afterPath="$PROJECT_DIR$/oppg3/f2/Hermite_Chebyshev/f2_Hermite_Chebyshev_16.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f2/Hermite_Chebyshev/f2_Hermite_Chebyshev_2.txt" afterPath="$PROJECT_DIR$/oppg3/f2/Hermite_Chebyshev/f2_Hermite_Chebyshev_2.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f2/Hermite_Chebyshev/f2_Hermite_Chebyshev_4.txt" afterPath="$PROJECT_DIR$/oppg3/f2/Hermite_Chebyshev/f2_Hermite_Chebyshev_4.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f2/Hermite_Chebyshev/f2_Hermite_Chebyshev_6.txt" afterPath="$PROJECT_DIR$/oppg3/f2/Hermite_Chebyshev/f2_Hermite_Chebyshev_6.txt" />
@@ -23,6 +48,14 @@
       <change beforePath="$PROJECT_DIR$/oppg3/f2/Hermite_Uniform/f2_Hermite_Uniform_4.txt" afterPath="$PROJECT_DIR$/oppg3/f2/Hermite_Uniform/f2_Hermite_Uniform_4.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f2/Hermite_Uniform/f2_Hermite_Uniform_6.txt" afterPath="$PROJECT_DIR$/oppg3/f2/Hermite_Uniform/f2_Hermite_Uniform_6.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f2/Hermite_Uniform/f2_Hermite_Uniform_8.txt" afterPath="$PROJECT_DIR$/oppg3/f2/Hermite_Uniform/f2_Hermite_Uniform_8.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f2/Lagrange_Chebyshev/f2_Lagrange_Chebyshev_2.txt" afterPath="$PROJECT_DIR$/oppg3/f2/Lagrange_Chebyshev/f2_Lagrange_Chebyshev_2.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f2/Lagrange_Chebyshev/f2_Lagrange_Chebyshev_4.txt" afterPath="$PROJECT_DIR$/oppg3/f2/Lagrange_Chebyshev/f2_Lagrange_Chebyshev_4.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f2/Lagrange_Chebyshev/f2_Lagrange_Chebyshev_6.txt" afterPath="$PROJECT_DIR$/oppg3/f2/Lagrange_Chebyshev/f2_Lagrange_Chebyshev_6.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f2/Lagrange_Chebyshev/f2_Lagrange_Chebyshev_8.txt" afterPath="$PROJECT_DIR$/oppg3/f2/Lagrange_Chebyshev/f2_Lagrange_Chebyshev_8.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f2/Lagrange_Uniform/f2_Lagrange_Uniform_2.txt" afterPath="$PROJECT_DIR$/oppg3/f2/Lagrange_Uniform/f2_Lagrange_Uniform_2.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f2/Lagrange_Uniform/f2_Lagrange_Uniform_4.txt" afterPath="$PROJECT_DIR$/oppg3/f2/Lagrange_Uniform/f2_Lagrange_Uniform_4.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f2/Lagrange_Uniform/f2_Lagrange_Uniform_6.txt" afterPath="$PROJECT_DIR$/oppg3/f2/Lagrange_Uniform/f2_Lagrange_Uniform_6.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f2/Lagrange_Uniform/f2_Lagrange_Uniform_8.txt" afterPath="$PROJECT_DIR$/oppg3/f2/Lagrange_Uniform/f2_Lagrange_Uniform_8.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f3/Hermite_Chebyshev/f3_Hermite_Chebyshev_2.txt" afterPath="$PROJECT_DIR$/oppg3/f3/Hermite_Chebyshev/f3_Hermite_Chebyshev_2.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f3/Hermite_Chebyshev/f3_Hermite_Chebyshev_4.txt" afterPath="$PROJECT_DIR$/oppg3/f3/Hermite_Chebyshev/f3_Hermite_Chebyshev_4.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f3/Hermite_Chebyshev/f3_Hermite_Chebyshev_6.txt" afterPath="$PROJECT_DIR$/oppg3/f3/Hermite_Chebyshev/f3_Hermite_Chebyshev_6.txt" />
@@ -47,10 +80,14 @@
       <change beforePath="$PROJECT_DIR$/oppg3/f4/Hermite_Uniform/f4_Hermite_Uniform_4.txt" afterPath="$PROJECT_DIR$/oppg3/f4/Hermite_Uniform/f4_Hermite_Uniform_4.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f4/Hermite_Uniform/f4_Hermite_Uniform_6.txt" afterPath="$PROJECT_DIR$/oppg3/f4/Hermite_Uniform/f4_Hermite_Uniform_6.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f4/Hermite_Uniform/f4_Hermite_Uniform_8.txt" afterPath="$PROJECT_DIR$/oppg3/f4/Hermite_Uniform/f4_Hermite_Uniform_8.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f4/Lagrange_Chebyshev/f4_Lagrange_Chebyshev_2.txt" afterPath="$PROJECT_DIR$/oppg3/f4/Lagrange_Chebyshev/f4_Lagrange_Chebyshev_2.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f4/Lagrange_Chebyshev/f4_Lagrange_Chebyshev_4.txt" afterPath="$PROJECT_DIR$/oppg3/f4/Lagrange_Chebyshev/f4_Lagrange_Chebyshev_4.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f4/Lagrange_Chebyshev/f4_Lagrange_Chebyshev_6.txt" afterPath="$PROJECT_DIR$/oppg3/f4/Lagrange_Chebyshev/f4_Lagrange_Chebyshev_6.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f4/Lagrange_Chebyshev/f4_Lagrange_Chebyshev_8.txt" afterPath="$PROJECT_DIR$/oppg3/f4/Lagrange_Chebyshev/f4_Lagrange_Chebyshev_8.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f4/Lagrange_Uniform/f4_Lagrange_Uniform_2.txt" afterPath="$PROJECT_DIR$/oppg3/f4/Lagrange_Uniform/f4_Lagrange_Uniform_2.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f4/Lagrange_Uniform/f4_Lagrange_Uniform_4.txt" afterPath="$PROJECT_DIR$/oppg3/f4/Lagrange_Uniform/f4_Lagrange_Uniform_4.txt" />
       <change beforePath="$PROJECT_DIR$/oppg3/f4/Lagrange_Uniform/f4_Lagrange_Uniform_6.txt" afterPath="$PROJECT_DIR$/oppg3/f4/Lagrange_Uniform/f4_Lagrange_Uniform_6.txt" />
+      <change beforePath="$PROJECT_DIR$/oppg3/f4/Lagrange_Uniform/f4_Lagrange_Uniform_8.txt" afterPath="$PROJECT_DIR$/oppg3/f4/Lagrange_Uniform/f4_Lagrange_Uniform_8.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -64,8 +101,8 @@
       <file leaf-file-name="Interpolation_Program.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Interpolation_Program.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="199" column="60" lean-forward="true" selection-start-line="199" selection-start-column="60" selection-end-line="199" selection-end-column="60" />
+            <state relative-caret-position="383">
+              <caret line="128" column="21" lean-forward="false" selection-start-line="128" selection-start-column="21" selection-end-line="128" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -126,7 +163,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="width" value="976" />
     <option name="height" value="1038" />
@@ -222,7 +259,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5015674" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -419,8 +456,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Interpolation_Program.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="199" column="60" lean-forward="true" selection-start-line="199" selection-start-column="60" selection-end-line="199" selection-end-column="60" />
+        <state relative-caret-position="383">
+          <caret line="128" column="21" lean-forward="false" selection-start-line="128" selection-start-column="21" selection-end-line="128" selection-end-column="21" />
           <folding />
         </state>
       </provider>

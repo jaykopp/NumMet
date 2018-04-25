@@ -195,16 +195,13 @@ def Plot_Polynomials(PATH,DATA,f0,I):
     return 0
 
 for file in ["f1.xml", "f2.xml", "f3.xml", "f4.xml"]:
-<<<<<<< HEAD
     for method in ["Hermite", "Lagrange"]:
-=======
-    for method in ["Lagrange", "Hermite"]:
->>>>>>> 363be2c569d94b26f1026d5dfeda239601d9be6c
+
         for partition in ["Chebyshev", "Uniform"]:
 
             for i in [2,4,6,8]:
                 Interpolation_Program(file, "Evaluation", method, partition, i)
-            #Interpolation_Program(file, "Error", method, partition, 4)
+            Interpolation_Program(file, "Error", method, partition, 4)
             Interpolation_Program(file, "Visualization", method, partition, 4)
 
 #Interpolation_Program("f1.xml", "Evaluation", "Hermite", "Chebyshev", 4)
