@@ -52,16 +52,18 @@ def Run_Simulation(matrix,algorithm):   	# tar inn et tall matrix og en string a
 
 
 def Power_Eig(A,x):
-    r = 1
+    r = 0
     it = 0
-    
-    while nl.norm(np.dot(A,x) - np.dot(x,r)) > 10**-14:
+    err = 1
+    while err > 10**-14:
         it += 1
         y = np.dot(A, x)
-        y_abs = nl.norm(y, np.inf)
-        r = y[1] / x[1] 	# y |-> y[1] is arbitrary linear functional
-        x = y / y_abs   	# normalization
+        r = y[0] / x[0]
+        y = y/nl.norm(y, np.inf)
+        err = nl.norm(x - y,np.inf)                 # y |-> y[1] is arbitrary linear functional
+        x = y                                       
     return r, it
+
 
 
 
