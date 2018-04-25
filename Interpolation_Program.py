@@ -97,33 +97,29 @@ def Lagrange_Newton_Evaluation(X, a, n, t):
 
 
 def Hermite_Newton_Coefficients(f0,f1,X,n):
-    k = 2*n + 1
-    Z = [0] * (k+1)
-    Q = [[0]*(k+1) for i in range(k+1)]
-    for i in range(n):
+    a = np.zeros(2*(n))
+    Z = np.zeros(2*(n))
+    for i in range(0,n):
         Z[2*i] = X[i]
-        Z[2*i + 1] = X[i]
-        Q[2*i][0] = f0(X[i])
-        Q[2*i + 1][0] = f0(X[i])
-        Q[2*i][1] = f1(X[i])
-        if i != 0:
-            Q[2*i][1] = (Q[2*i][0] - Q[2*i - 1][0])/(Z[2*i] - Z[2*i-1])
-    for i in range(2, k+1):
-        for j in range(2, i+1):
-            if math.fabs(Z[i] - Z[i-j])<10**(-10):
-                Q[i][j] = f1(Z[i])
-            else:
-                Q[i][j] = (Q[i][j-1] - Q[i-1][j-1]) / (Z[i] - Z[i-j])
-    return Z, Q
+        Z[2*i+1] = X[i]
+    for i in range(2*n):
+        a[i] = f0(Z[i])
 
-def Hermite_Newton_Evaluation(Q,a,n,t):
-    k = 2 * n + 1
-    s = Q[k][k] * (t - a[k-1])
-    for i in range(2, k + 1):
-        j = k - i + 1
-        s = (s+Q[j][j]) * (t - a[j-1])
-    s = s + Q[0][0]
-    return s
+    for j in range(1,2*(n)):
+        for i in range(2*(n)-1, j-1, -1):
+            if math.fabs(Z[i]-Z[i-j]) < 10**(-10): #Almost identical
+                a[i] = f1(Z[j-1])
+            else:
+                a[i] = (a[i]-a[i-1])/(Z[i]-Z[i-j])
+
+    return a,Z
+
+
+def Hermite_Newton_Evaluation(Z,a,n,t):
+    H = a[2*n-1]
+    for i in range(2*n-1,-1,-1):
+        H = H*(t-Z[i])+a[i]
+    return H
 
 
 def Collect_Data(PREFIX,METHOD,GRID,I):
@@ -196,7 +192,7 @@ def Plot_Polynomials(PATH,DATA,f0,I):
     return 0
 
 for file in ["f1.xml", "f2.xml", "f3.xml", "f4.xml"]:
-    for method in ["Lagrange", "Hermite"]:
+    for method in ["Hermite"]:
         for partition in ["Chebyshev", "Uniform"]:
 
             for i in [2,4,6,8]:
