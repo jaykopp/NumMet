@@ -11,28 +11,28 @@ from scipy.sparse import diags
 ################################################################################
 
 
-def Eigenvalue_Program(program,algorithm,matrix):
-    if program == "Run_Simulation":
-	for i in matrix:
+def Eigenvalue_Program(program,algorithm,matrix): 	#tar inn hvilket program og hvilken algoritme, samt en én til tre lang array med tall fra én til tre, som har en tilhørende matrise !, B eller C
+    if program == "Run_Simulation":			
+	for i in matrix:				# itererer gjennom array-en og kjører simulering på alle tall med i den
             Run_Simulation(i, algorithm)
 	return 0
-    elif program == "Plot_Iterations":
+    elif program == "Plot_Iterations":			#plotter matrisene tilsvarende tallene
 	Plot_Iterations(algorithm, matrix)
 	return 0
     else: return 0
 
-def Matrix_Generator(matrix,n):
-    A = np.zeros((n, n)) #lager 0matrise
-    forskjell = -int(len(matrix)/2)
+def Matrix_Generator(matrix,n):			#tar inn en liste matrix og et tall n
+    A = np.zeros((n, n)) 			#fyller A med 0
+    forskjell = -int(len(matrix)/2)		
     for i in matrix:
-        A += i*np.eye(n,n,forskjell)
+        A += i*np.eye(n,n,forskjell)		#legger til i ganger forskjell på diagonalen
         forskjell+=1
     return A
 
 
-def Run_Simulation(matrix,algorithm):   	# tar inn et tall matrix og en string algorithm
+def Run_Simulation(matrix,algorithm):   	# tar inn et tall matrix tilsvarende en matrise og en string algorithm
     A = []    
-    if matrix == 1:
+    if matrix == 1:				# legger matrise til riktig tall
         A = [4,11,4]
     elif matrix == 2:
         A = [2,-7,20,-7,2]
@@ -40,16 +40,16 @@ def Run_Simulation(matrix,algorithm):   	# tar inn et tall matrix og en string a
         A = [6,-3,-7,19,-7,-3,6]
     
     
-    if(algorithm == "Power_Eig"):           # og en string algorithm
-        powerfile = open("Power_"+str(matrix)+".txt","w") #åpner fil for å legge til data
-        for i in range(10,201):
-            x = [1/i**(1/2)]*i                          #lager en vektor med lengde matrix med hvert element 1/matrix^1/2
-            B = Matrix_Generator(A,i)                   # denne er bare her for å teste
-            egen, it = Power_Eig(B, x)
-            powerfile.write(str(i)+"\t"+str(it)+"\n") # legger til i en fil
-        powerfile.close()
+    if(algorithm == "Power_Eig"):           			# sjekker hvilken algoritme man skal bruke
+        powerfile = open("Power_"+str(matrix)+".txt","w")	#åpner fil for å legge til data
+        for i in range(10,201):					#itererer fra 10 til 2000
+            x = [1/i**(1/2)]*i                          	#lager en vektor med lengde i med hvert element 1/matrix^1/2
+            B = Matrix_Generator(A,i)                   	# Genererer en matrise av type "matrix" med dimensjon ixi
+            egen, it = Power_Eig(B, x)				#kjører algoritmen på B
+            powerfile.write(str(i)+"\t"+str(it)+"\n") 		# legger til i en fil
+        powerfile.close()					#lukker filen
         return 0
-    elif(algorithm == "QR_Eig"):
+    elif(algorithm == "QR_Eig"):				# tilsvarende her for QR-filen
         QRfile = open("QR_"+str(matrix)+".txt", "w")
         for i in range(10,201):
             B = Matrix_Generator(A,i) 
@@ -61,16 +61,16 @@ def Run_Simulation(matrix,algorithm):   	# tar inn et tall matrix og en string a
 
 
 def Power_Eig(A,x):
-    r = 0
-    it = 0
-    err = 1
+    r = 0				#egenverdi, ikke bestemt ennå
+    it = 0				#iterasjoner
+    err = 1				#error
     while err > 10**-14:
         it += 1
-        y = np.dot(A, x)
-        r = y[0] / x[0]
-        y = y/nl.norm(y, np.inf)
-        err = nl.norm(x - y,np.inf)                 # y |-> y[1] is arbitrary linear functional
-        x = y                                       
+        y = np.dot(A, x)		#Prikkprodukt mellom matrise A og vektor x
+        r = y[0] / x[0]			#setter egenverdi
+        y = y/nl.norm(y, np.inf)	#normaliserer
+        err = nl.norm(x - y,np.inf)	# y |-> y[1] is arbitrary linear functional
+        x = y                           
     return r, it
 
 
