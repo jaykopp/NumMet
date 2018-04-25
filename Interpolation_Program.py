@@ -23,6 +23,7 @@ def Interpolation_Program(XMLFILE, PROGRAM, METHOD, GRID, n):
 
     if(PROGRAM == "Evaluation"):
         X = Partition(GRID, I, n)
+        print(X)
         Compute_Points(PREFIX, METHOD, GRID, f0, f1, I, X, n)
     else:
         DATA, T, PATH = Collect_Data(PREFIX,METHOD,GRID,4)
@@ -42,20 +43,19 @@ def XML_Extraction(XMLFILE):
 
 def Partition(GRID, I, n):
         partition = []
-        e = I[1]
-        s = I[0]
+        a = I[0]
+        b = I[1]
         if GRID == "Uniform":
             for i in range(0, n):
-                partition.append(i/(n-1)*(e-s) + s)
+                partition.append(i/(n-1)*(b-a) + a)
         else:
-            for i in range(1, n):
-                partition.append((1/2)*(s+e) + (1/2)*(e-s) * np.cos(((2*i-1) / (2*n)) * math.pi))
-        print(partition)
+            for i in range(0, n):
+                partition.append((1/2)*(a+b) + (1/2)*(b-a) * np.cos(((2*i+1) / (2*n)) * math.pi))
         return partition
 
 
 def Compute_Points(PREFIX, METHOD, GRID, f0, f1, I, X, n):
-    fname = "oppg3/"+PREFIX+"/"+METHOD+"_"+GRID+"/"+PREFIX+"_"+METHOD+"_"+GRID+"_"+str(n)+".txt"
+    fname = "oppg3/"+PREFIX+"/"+METHOD+"_"+GRID+"/"+PREFIX+"_"+METHOD+"_"+GRID+"_"+str(n-1)+".txt"
     file = open(fname, "w")
     if METHOD == "Lagrange":
         a = Lagrange_Newton_Coefficients(f0, X, n)
@@ -84,11 +84,7 @@ def Lagrange_Newton_Coefficients(f0, X, n):
     for i in range(n):
         a[i] = f0(X[i])
     for j in range(1, n):
-<<<<<<< HEAD
         for i in range(n-1, j - 1, -1):
-=======
-        for i in range(n - 1, j - 1, -1):
->>>>>>> 3dd9955390c3c2cb62b1bb923703ee103bf9a610
             a[i] = (a[i] - a[i-1]) / (X[i] - X[i-j]);
     return a
 
@@ -98,7 +94,6 @@ def Lagrange_Newton_Evaluation(X, a, n, t):
     temp = a[n-1]
     for i in range(n - 2, -1, -1):
         temp = temp*(t - X[i]) + a[i]
-    #print(temp)
     return temp
 
 
@@ -114,16 +109,12 @@ def Hermite_Newton_Coefficients(f0,f1,X,n):
         Q[2*i][1] = f1(X[i])
         if i != 0:
             Q[2*i][1] = (Q[2*i][0] - Q[2*i - 1][0])/(Z[2*i] - Z[2*i-1])
-            #print("under brøk",(Z[2*i] - Z[2*i-1]))
-            #print("over brøk", Q[2*i][0] - Q[2*i - 1][0])
     for i in range(2, k+1):
         for j in range(2, i+1):
             if (Z[i] - Z[i-j])<10**(-1):
                 Q[i][j] = f1(Z[i])
-                #print("om dei er like", f1(Z[i]))
             else:
                 Q[i][j] = (Q[i][j-1] - Q[i-1][j-1]) / (Z[i] - Z[i-j])
-                print("yes",(Q[i][j-1] - Q[i-1][j-1]) / (Z[i] - Z[i-j]))
     return Z, Q
 
 
@@ -140,7 +131,7 @@ def Hermite_Newton_Evaluation(Q,a,n,t):
 def Collect_Data(PREFIX,METHOD,GRID,I):
     DATA = []
     PATH = "oppg3/"+PREFIX+"/"+METHOD+"_"+GRID+"/"
-    for i in range(2, 7):
+    for i in [2,4,6,8]:
         fname = PATH + PREFIX+"_"+METHOD+"_"+GRID+"_"+str(i)+".txt"
 
         with open(fname) as file:
@@ -153,7 +144,7 @@ def Plot_Error(PATH, DATA, f0, T, I):
     plt.figure()
     plt.xlabel('Plynomial Degree')
     plt.ylabel('Error')
-    plt.title('Error for polynomials in ' + PATH)
+    plt.suptitle('Error for polynomials in ' + PATH)
 
     yPlot = []
     xPlot = []
@@ -174,42 +165,41 @@ def Plot_Error(PATH, DATA, f0, T, I):
 
 def Plot_Polynomials(PATH,DATA,f0,I):
     plt.subplots()
+    plt.suptitle('Visualization for ' + PATH)
+
     plt.xlabel('X values')
     plt.ylabel('Y Values')
-    plt.title('Visualization for ' + PATH)
-
     xPlot = []
     yPlot = []
     zPlot = []
 
-    for i in range(len(DATA)):
+    for i in range(0, len(DATA)):
         # Loop through datasets (each different polynom)
-        yPlot = [] 
-        for j in range(len(DATA[i])):
+        yPlot = []
+        xPlot = []
 
+        for j in range(0,len(DATA[i])):
             if i == 0:
                 # Though first loop, add target value function and x values
                 x = j * 0.01 + I[0]
-                xPlot.append(x)
                 zPlot.append(f0(x))
 
+            xPlot.append(j * 0.01 + I[0])
             ## Append value at point
             yPlot.append(float(DATA[i][j]))
+        if i == 0:
+            # Plot the target function
+            plt.plot(xPlot, zPlot, '--', label='Target function', lw=2, color="black")
         # Plot the dataset
-        plt.plot(xPlot, yPlot)
-    # Plot the target function
-    plt.plot(xPlot, zPlot)
+        plt.plot(xPlot, yPlot, label='Degree '+str(2*i + 2), lw=2)
+    
+    plt.legend()
     plt.show()
     return 0
-<<<<<<< HEAD
-for i in range(1, 19):
-    Interpolation_Program("f1.xml", "Evaluation", "Hermite", "Uniform", i)
-Interpolation_Program("f1.xml", "Error", "Hermite", "Uniform", 4)
-Interpolation_Program("f1.xml", "Visualization", "Hermite", "Uniform", 4)
 
-=======
-for i in range(2, 21):
-    Interpolation_Program("f1.xml", "Evaluation", "Hermite", "Uniform", i)
-Interpolation_Program("f1.xml", "Error", "Hermite", "Uniform", 4)
->>>>>>> 3dd9955390c3c2cb62b1bb923703ee103bf9a610
-#Interpolation_Program("f1.xml", "Evaluation", "Hermite", "Uniform", 4)
+for i in [2,4,6,8]:
+    Interpolation_Program("f1.xml", "Evaluation", "Lagrange", "Uniform", i)
+Interpolation_Program("f1.xml", "Error", "Lagrange", "Uniform", 4)
+Interpolation_Program("f1.xml", "Visualization", "Lagrange", "Uniform", 4)
+
+#Interpolation_Program("f1.xml", "Evaluation", "Hermite", "Chebyshev", 4)

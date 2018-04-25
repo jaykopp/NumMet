@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<DATA>
+  <Function>
+    <Zero>math.cos(math.pi*x)/(math.cosh(x))</Zero>
+    <One>-2*(math.pi*math.sin(math.pi*x) + math.cos(math.pi*x)*math.tanh(x))/(math.e**x + math.e**(-x))</One>
+  </Function>
+  <Interval>
+    <Start>-4</Start>
+    <End>4</End>
+  </Interval>
+</DATA>
