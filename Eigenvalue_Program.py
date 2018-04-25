@@ -25,27 +25,30 @@ def Matrix_Generator(matrix,n):
 
 
 def Run_Simulation(matrix,algorithm):   	# tar inn et tall matrix og en string algorithm
-    if(algorithm == "Power_Eig"):       # og en string algorithm
-        powerfile = open("Power_1.txt","w") #åpner fil for å legge til data
-        for i in range(10,matrix):
-            x = [1/i**(1/2)]*i   #lager en vektor med lengde matrix med hvert element 1/matrix^1/2
-            A = Matrix_Generator([4,11,4],i) # denne er bare her for å teste
-            B = Matrix_Generator([2,-7,20,-7,2],i) # vet ikke om jeg skal beholde dem her eller gjøre det på en bedre måte
-            C = Matrix_Generator([6,-3,-7,19,-7,-3,6],i) # todo er å gjøre denne bedre
-            egen1, it1 = Power_Eig(A, x)
-            egen2, it2 = Power_Eig(B, x)
-            egen3, it3 = Power_Eig(C, x)
-            powerfile.write(str(i)+"\t"+str(it1)+"\t"+str(it2)+"\t"+str(it3)+"\n") # legger til i en fil
+    A = []    
+    if matrix == 1:
+        A = [4,11,4]
+    elif matrix == 2:
+        A = [2,-7,20,-7,2]
+    elif matrix == 3:
+        A = [6,-3,-7,19,-7,-3,6]
+    
+    
+    if(algorithm == "Power_Eig"):           # og en string algorithm
+        powerfile = open("Power_"+str(matrix)+".txt","w") #åpner fil for å legge til data
+        for i in range(10,201):
+            x = [1/i**(1/2)]*i                          #lager en vektor med lengde matrix med hvert element 1/matrix^1/2
+            B = Matrix_Generator(A,i)                   # denne er bare her for å teste
+            egen, it = Power_Eig(B, x)
+            powerfile.write(str(i)+"\t"+str(it)+"\n") # legger til i en fil
         powerfile.close()
         return 0
     elif(algorithm == "QR_Eig"):
-        QRfile = open("QR_1.txt", "w")
-        for i in range(10,matrix):
-            B = Matrix_Generator([2,-7,20,-7,2],i) # vet ikke om jeg skal beholde dem her eller gjøre det på en bedre måte
-            C = Matrix_Generator([6,-3,-7,19,-7,-3,6],i) # todo er å gjøre denne bedre
-            eig1, it1 = QR_Eig(B, i)
-            eig2, it2 = QR_Eig(C, i)
-            QRfile.write(str(i)+"\t"+str(it1)+"\t"+str(i)+"\t"+str(it2)+"\n")
+        QRfile = open("QR_"+str(matrix)+".txt", "w")
+        for i in range(10,201):
+            B = Matrix_Generator(A,i) 
+            eig, it = QR_Eig(B, i)
+            QRfile.write(str(i)+"\t"+str(it)+"\n")
         QRfile.close()
         return 0
     else: return 0
