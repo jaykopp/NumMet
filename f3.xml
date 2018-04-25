@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <DATA>
   <Function>
-    <Zero>math.cos(4*x*math.acos(0))*math.exp(-x**2)</Zero>
-    <One>-2*math.exp(-x**2)*(2*math.acos(0)*math.sin(4*math.acos(0)*x)+x*math.cos(4*math.acos(0)*x))</One>
+    <Zero>math.cos(2*math.pi*x)*math.e**(-x**2)</Zero>
+    <One>-2*math.e**(-x**2)*(math.pi*math.sin(2*math.pi*x) + x*math.cos(2*math.pi*x))</One>
   </Function>
   <Interval>
     <Start>-2</Start>

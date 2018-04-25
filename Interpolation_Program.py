@@ -108,7 +108,7 @@ def Hermite_Newton_Coefficients(f0,f1,X,n):
     for j in range(1,2*(n)):
         for i in range(2*(n)-1, j-1, -1):
             if math.fabs(Z[i]-Z[i-j]) < 10**(-10): #Almost identical
-                a[i] = f1(Z[j-1])
+                a[i] = (a[i]-a[i-1])/f1(Z[j-1])
             else:
                 a[i] = (a[i]-a[i-1])/(Z[i]-Z[i-j])
 
@@ -192,7 +192,7 @@ def Plot_Polynomials(PATH,DATA,f0,I):
     return 0
 
 for file in ["f1.xml", "f2.xml", "f3.xml", "f4.xml"]:
-    for method in ["Hermite"]:
+    for method in ["Hermite", "Lagrange"]:
         for partition in ["Chebyshev", "Uniform"]:
 
             for i in [2,4,6,8]:
