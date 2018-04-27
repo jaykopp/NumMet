@@ -87,7 +87,7 @@ def QR_Eig(A, n):
     return L, N
 
 
-def Hessenberg(A, n):  # Returns the Hessenberg form of a matrix
+def Hessenberg(A, n):  # returnerer hessenbergformen til en matrisen A
     for k in range(1, n - 2):
         z = A[k + 1:n+1, k]
         e = np.array([0] * (n-k-1))
@@ -99,11 +99,11 @@ def Hessenberg(A, n):  # Returns the Hessenberg form of a matrix
     return A
 
 
-def QR_Shift(A, m, tol):
-    la = A[m - 1][m - 1]  # lambda
-    t = 0                 # number of iterations
+def QR_Shift(A, m, tol):  # QR-shifter matrise A
+    la = A[m - 1][m - 1]  
+    t = 0                 
     e = 1
-    I = np.identity(m)    # mxm identity matrix
+    I = np.identity(m)
     if m > 1:
         while e > tol:
             t += 1
@@ -114,7 +114,7 @@ def QR_Shift(A, m, tol):
     return la, A, t
 
 def Plot_Iterations(algorithm, matricies): # matricies = [1], [2], [3], [1, 2], [1, 3], [2, 3], [1,2,3]
-    data = [] # eller [[]*(len(matricies))] ?
+    data = [] 				   # data får vekslende kolonner med input og output av enten Power eller QR
     t = 0
     fig, ax1 = plt.subplots()
     if algorithm == "Power_Eig":
