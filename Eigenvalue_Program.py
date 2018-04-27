@@ -120,7 +120,16 @@ def QR_Shift(A, m, tol):  # QR-shifter matrise A
 
 def Plot_Iterations(algorithm, matricies):  # matricies = [1], [2], [3], [1, 2], [1, 3], [2, 3], [1,2,3]
     data = []  # data far vekslende kolonner med input og output av enten Power eller QR
+    matrix_name = [] # navn på matriser for legend
+    for i in range(len(matricies)):
+        if matricies[i] == 1:
+            matrix_name.append("A")
+        elif matricies[i] == 2:
+            matrix_name.append("B")
+        elif matricies[i] == 3:
+            matrix_name.append("C")
     t = 0
+    j = 0
     fig, ax1 = plt.subplots()
     if algorithm == "Power_Eig":
         for i in matricies:
@@ -133,17 +142,10 @@ def Plot_Iterations(algorithm, matricies):  # matricies = [1], [2], [3], [1, 2],
             data.append(size)
             data.append(iter)
 
-            ax1.plot(data[t], data[t + 1])
+            ax1.plot(data[t], data[t + 1], label='Matrix $ \mathbf{' +str(matrix_name[j]) +'}$')
             t += 2
-        """
-        for i in len(matricies):
-            if matricies[i] == 1:
-                matricies[i] = "A"
-            elif matricies[i] == 2:
-                matricies[i] = "B"
-            elif matricies[i] == 3:
-                matricies[i] = "C"
-        """
+            j += 1
+            
         ax1.set_xlabel(r'size of matrix', fontsize=10)
         ax1.set_ylabel(r'iterations', fontsize=10)
         ax1.legend(loc='best')
@@ -162,8 +164,9 @@ def Plot_Iterations(algorithm, matricies):  # matricies = [1], [2], [3], [1, 2],
             data.append(size)
             data.append(iter)
 
-            ax1.plot(data[t], data[t + 1])
+            ax1.plot(data[t], data[t + 1], label='Matrix $ \mathbf{' +str(matrix_name[j]) +'}$')
             t += 2
+            j += 1
 
         ax1.set_xlabel(r'size of matrix', fontsize=10)
         ax1.set_ylabel(r'iterations$', fontsize=10)
@@ -175,5 +178,5 @@ def Plot_Iterations(algorithm, matricies):  # matricies = [1], [2], [3], [1, 2],
 
 #Eigenvalue_Program("Run_Simulation", "Power_Eig", [1, 2, 3])
 #Eigenvalue_Program("Run_Simulation", "QR_Eig", [2, 3])
-Eigenvalue_Program("Plot_Iterations", "Power_Eig", [1, 2, 3])
-Eigenvalue_Program("Plot_Iterations", "QR_Eig", [2, 3])
+#Eigenvalue_Program("Plot_Iterations", "Power_Eig", [1, 2, 3])
+#Eigenvalue_Program("Plot_Iterations", "QR_Eig", [2, 3])
